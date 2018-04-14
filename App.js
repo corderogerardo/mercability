@@ -8,6 +8,11 @@ import Form from './components/login/Form';
 import SignupSection from './components/login/SignupSection';
 import ButtonSubmit from './components/login/ButtonSubmit';
 
+// Engelber
+
+import Usuario from './components/usuario/fondo';
+import LogoPrincipal from './components/usuario/logoprincipal';
+import UsoInput from './components/usuario/uso-input';
 
 
 
@@ -22,17 +27,29 @@ export default class App extends Component {
 
   render() {
     return (
-      <Wallpaper>
+      //<Wallpaper>
 
-      <Titulo />
-      <Titulo />
-      <Logot />
-      <Logof />
-      <Form />
-      <SignupSection />
-      <ButtonSubmit />
+      //<Titulo />
+      //<Titulo />
+      //<Logot />
+      //<Logof />
+      //<Form />
+      //<SignupSection />
+      //<ButtonSubmit />
 
-      </Wallpaper>
+      //</Wallpaper>
+
+
+      // Engelber
+
+      <Usuario>
+      <LogoPrincipal />
+      <UsoInput />
+
+
+      </Usuario>
+
+
     );
   }
 }
