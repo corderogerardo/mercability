@@ -25,6 +25,7 @@ export default class App extends Component {
       <Wallpaper>
 
       <Titulo />
+      <Titulo />
       <Logot />
       <Logof />
       <Form />
