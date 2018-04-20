@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {View, Text,Image} from 'react-native';
 
-class Screen1 extends Component {
-    static navigationOptions = {
+class Screen3 extends Component {
+      static navigationOptions = {
     drawerIcon:(
       <Image
         source={require('../../images/home1.png')}
@@ -14,11 +14,10 @@ class Screen1 extends Component {
     render() {
         return (
             <View>
-                <Text>home</Text>
+                <Text>Categoria</Text>
             </View>
         );
     }
 }
 
-export default Screen1;
-
+export default Screen3;
