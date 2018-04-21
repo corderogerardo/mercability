@@ -9,6 +9,15 @@ import {
 import Timeline from 'react-native-timeline-listview'
 
 export default class Example extends Component {
+	static navigationOptions = {
+    drawerIcon:(
+      <Image
+        source={require('../../images/home1.png')}
+        style={{
+    width: 24,
+    height: 24,
+  }}
+/>)}
   constructor(){
     super()
     this.onEventPress = this.onEventPress.bind(this)

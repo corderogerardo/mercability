@@ -5,7 +5,7 @@ class Screen3 extends Component {
       static navigationOptions = {
     drawerIcon:(
       <Image
-        source={require('../../images/home1.png')}
+        source={require('../../images/categorias2.png')}
         style={{
     width: 24,
     height: 24,

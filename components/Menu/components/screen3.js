@@ -5,7 +5,7 @@ class Screen3 extends Component {
       static navigationOptions = {
     drawerIcon:(
       <Image
-        source={require('../../images/home1.png')}
+        source={require('../../images/flecha.png')}
         style={{
     width: 24,
     height: 24,
@@ -14,7 +14,7 @@ class Screen3 extends Component {
     render() {
         return (
             <View>
-                <Text>Ver Publicaciones</Text>
+                <Text>Publicar</Text>
             </View>
         );
     }
