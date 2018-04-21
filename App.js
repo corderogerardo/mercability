@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Header, Button, Spinner } from './src/commom';
 import LoginForm from './src/LoginForm/LoginForm';
+import Router from './src/Router';
 
 class App extends Component {
     state = { loggedIn: null };
@@ -27,11 +28,11 @@ class App extends Component {
     }
 
     render() {
+        const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
         return (
-            <View>
-                <Header headerText="Authentication"/>
-                { this.renderContent() }
-            </View>
+            <Provider store={store}>
+            <Router />
+            </Provider>
         );
     }
 }
