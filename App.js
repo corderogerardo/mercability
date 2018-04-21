@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 /*
 import Titulo from './components/login/Logo';
 import Logof from './components/login/Logof';
@@ -10,12 +11,11 @@ import ButtonSubmit from './components/login/ButtonSubmit';
 */
 // Engelber
 
+import Menu from './components/Menu/Menu';
 import Usuario from './components/usuario/fondo';
 import LogoPrincipal from './components/usuario/logoprincipal';
 //import UsoInput from './components/usuario/uso-input';
 import Formulario from './components/usuario/formulario';
-
-
 
 // You can import from local files
 
@@ -28,6 +28,9 @@ export default class App extends Component {
 
   render() {
     return (
+   
+     <Menu /> 
+  
       //<Wallpaper>
 
       //<Titulo />
