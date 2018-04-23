@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { View } from 'react-native';
 
 /*
 import Titulo from './components/login/Logo';
@@ -17,6 +18,12 @@ import LogoPrincipal from './components/usuario/logoprincipal';
 //import UsoInput from './components/usuario/uso-input';
 import Formulario from './components/usuario/formulario';
 
+
+// este es para el registro de usuario
+import TituloRegistroUsuario from './components/usuario/TituloRegistroUsuario';
+import RegistroUsuario from './components/usuario/RegistroUsuario';
+
+
 // You can import from local files
 
 
@@ -34,7 +41,7 @@ export default class App extends Component {
       //<Wallpaper>
 
       //<Titulo />
-      //<Titulo />
+    
       //<Logot />
       //<Logof />
       //<Form />
@@ -46,13 +53,18 @@ export default class App extends Component {
 
       // Engelber
 
-      <Usuario>
-      <LogoPrincipal />
-     
-      <Formulario />
+      //<Usuario>
+      //<LogoPrincipal />
+    // <Formulario />
+      //</Usuario>
 
 
-      </Usuario>
+      // este para eñ registro de usuario
+     // <View>
+       // <RegistroUsuario />
+       // <RegistroUsuario />
+      
+     // </View>
 
 
     );

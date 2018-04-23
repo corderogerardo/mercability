@@ -63,8 +63,6 @@ const styles = StyleSheet.create({
    top: 10,
     justifyContent: 'center',
     
-   
-    
   },
 
 

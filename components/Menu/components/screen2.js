@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import {View, Text,Image} from 'react-native';
 
+import PerfilUsuario from './../../../components/usuario/perfilusuario';
+import TituloPerfil from './../../../components/usuario/TituloPerfilUsuario';
+
 class Screen2 extends Component {
     static navigationOptions = {
     drawerIcon:(
@@ -14,7 +17,11 @@ class Screen2 extends Component {
     render() {
         return (
             <View>
-                <Text>Perfil</Text>
+
+                <TituloPerfil />
+
+                <PerfilUsuario />
+                
             </View>
         );
     }

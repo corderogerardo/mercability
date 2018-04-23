@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import {View, Text,Image} from 'react-native';
+import {View, Text,Image,headerText} from 'react-native';
+
+
+// Engelber
+
+import Titulo from './../../../components/categorias/Titulo';
+import Formulario from './../../../components/categorias/Formulario';
+//import BotonGeneral from './../../../components/categorias/BotonGeneral';
+
 
 class Screen3 extends Component {
       static navigationOptions = {
@@ -14,7 +22,9 @@ class Screen3 extends Component {
     render() {
         return (
             <View>
-                <Text>Categoria</Text>
+                <Titulo />
+                <Formulario />
+                
             </View>
         );
     }
