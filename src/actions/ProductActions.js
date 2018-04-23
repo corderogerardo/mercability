@@ -1,4 +1,3 @@
-import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import {
     PRODUCT_UPDATE,
@@ -9,56 +8,42 @@ import {
 
 export const productUpdate = ({ prop, value }) => {
     return {
-        type: EMPLOYEE_UPDATE,
+        type: PRODUCT_UPDATE,
         payload: { prop, value }
     };
 };
 
 export const productCreate = ({ name, phone, shift }) => {
-    //const { currentUser } = firebase.auth();
+    //const { currentUser } = 'User Auth';
 
     return (dispatch) => {
-        // firebase.database().ref(`/users/${currentUser.uid}/employees`)
-        //     .push({ name, phone, shift })
-        //     .then(() => {
-        //         dispatch({ type: EMPLOYEE_CREATE });
-        //         Actions.employeeList({ type: 'reset' });
-        //     });
+        //dispatch({ type: PRODUCT_CREATE });
+        //         Actions.productList({ type: 'reset' });
     };
 };
 
 export const productsFetch = () => {
-    //const { currentUser } = firebase.auth();
+    //const { currentUser } = '';
 
     return (dispatch) => {
-        // firebase.database().ref(`/users/${currentUser.uid}/employees`)
-        //     .on('value', snapshot => {
-        //         dispatch({ type: EMPLOYEES_FETCH_SUCCESS, payload: snapshot.val() });
-        //     });
+        //         dispatch({ type: PRODUCTS_FETCH_SUCCESS, payload: snapshot.val() });
     };
 };
 
 export const productSave = ({ name, phone, shift, uid }) => {
-    //const { currentUser } = firebase.auth();
+    //const { currentUser } = '';
 
     return (dispatch) => {
-        // firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
-        //     .set({ name, phone, shift })
-        //     .then(() => {
-        //         dispatch({ type: EMPLOYEE_SAVE_SUCCESS });
-        //         Actions.employeeList({ type: 'reset' });
-        //     });
+
+        //         dispatch({ type: PRODUCT_SAVE_SUCCESS });
+        //         Actions.productList({ type: 'reset' });
     };
 };
 
 export const productDelete = ({ uid }) => {
-    //const { currentUser } = firebase.auth();
+    //const { currentUser } = '';
 
     return () => {
-        // firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
-        //     .remove()
-        //     .then(() => {
-        //         Actions.employeeList({ type: 'reset' });
-        //     });
+        //         Actions.productList({ type: 'reset' });
     };
 };
