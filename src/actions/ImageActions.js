@@ -6,7 +6,7 @@ import {
     IMAGE_SAVE_SUCCESS
 } from './types';
 
-export const imageimage= ({ prop, value }) => {
+export const imageUpdate= ({ prop, value }) => {
     return {
         type: IMAGE_UPDATE,
         payload: { prop, value }

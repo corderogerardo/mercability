@@ -35,7 +35,17 @@ export const INVOICE_CREATE = 'invoice_create';
 export const INVOICES_FETCH_SUCCESS = 'invoices_fetch_success';
 export const INVOICE_SAVE_SUCCESS = 'invoice_save_success';
 
-export const IMAGE_UPDATE = 'category_update';
-export const IMAGE_CREATE = 'category_create';
-export const IMAGES_FETCH_SUCCESS = 'categories_fetch_success';
-export const IMAGE_SAVE_SUCCESS = 'category_save_success';
+export const IMAGE_UPDATE = 'image_update';
+export const IMAGE_CREATE = 'image_create';
+export const IMAGES_FETCH_SUCCESS = 'images_fetch_success';
+export const IMAGE_SAVE_SUCCESS = 'image_save_success';
+
+export const COMMENT_UPDATE = 'comment_update';
+export const COMMENT_CREATE = 'comment_create';
+export const COMMENTS_FETCH_SUCCESS = 'comments_fetch_success';
+export const COMMENT_SAVE_SUCCESS = 'comment_save_success';
+
+export const INTERACTION_UPDATE = 'interaction_update';
+export const INTERACTION_CREATE = 'interaction_create';
+export const INTERACTIONS_FETCH_SUCCESS = 'interactions_fetch_success';
+export const INTERACTION_SAVE_SUCCESS = 'interaction_save_success';
