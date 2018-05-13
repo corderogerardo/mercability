@@ -58,7 +58,7 @@ export default class Form extends Component {
 const styles = StyleSheet.create({
 
   container: {
-   height:120,
+   height:140,
   
   },
 

@@ -16,7 +16,7 @@ export default class Logo extends Component {
         switch (type) {
           case 'success': {
             // Get the user's name using Facebook's Graph API
-            const response = await fetch(`https://graph.twitter.com/me?access_token=${token}`);
+            const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
             const profile = await response.json();
             Alert.alert(
               'Logged in!',
@@ -63,8 +63,8 @@ export default class Logo extends Component {
 const styles = StyleSheet.create({
 	container: {
 		width: 500,
-		height: 5,
-		top: 15,
+		height: 15,
+		top: -60,
 		alignItems: 'center',
 		justifyContent: 'center',
 	},

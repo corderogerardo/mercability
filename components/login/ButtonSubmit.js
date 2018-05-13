@@ -10,7 +10,7 @@ import {
 
 	View,
 } from 'react-native';
-
+import { Actions } from 'react-native-router-flux';
 
 import spinner from '../images/loading.gif';
 
@@ -81,7 +81,7 @@ export default class ButtonSubmit extends Component {
 			<View style={styles.container}>
 				<Animated.View style={{width: changeWidth}}>
 					<TouchableOpacity style={styles.button}
-						onPress={this._onPress}
+				 onPress={() => Actions.menus()} 
 						activeOpacity={1} >
 							{this.state.isLoading ?
 								<Image source={spinner} style={styles.image} />
@@ -98,7 +98,7 @@ export default class ButtonSubmit extends Component {
 
 const styles = StyleSheet.create({
 	container: {
-		top: 1,
+		top: -5,
 		alignItems: 'center',
 		justifyContent: 'flex-start',
 	},

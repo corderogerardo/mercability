@@ -5,7 +5,7 @@ import {
 	View,
 	Text,TouchableOpacity,TouchableHighlight
 } from 'react-native';
-
+import { Actions } from 'react-native-router-flux';
 
 export default class SignupSection extends Component {
 	render() {
@@ -29,7 +29,7 @@ const DEVICE_WIDTH = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
 	container: {
-		top: 90,
+		top: 75,
 		width: DEVICE_WIDTH,
 		flexDirection: 'row',
 		justifyContent: 'space-around',
