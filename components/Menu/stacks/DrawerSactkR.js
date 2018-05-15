@@ -13,7 +13,7 @@ import campana from '../../images/campana4.png';
 import buscar from '../../images/lupa3.png';
 
 const DrawerNavigation = StackNavigator({
-    DrawerStack: {screen: DrawerScreen}
+    DrawerStack: {screen: DrawerScreenR}
 }, {
   
     headerMode: 'float',
