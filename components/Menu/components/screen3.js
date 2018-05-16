@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import {View, Text,Image} from 'react-native';
+import {View, Text,Image,ScrollView,StyleSheet} from 'react-native';
+
+
+import TituloPublicacion from './../../../components/publicaciones/TituloPublicacion';
+import Publicacion from './../../../components/publicaciones/Publicacion';
 
 class Screen3 extends Component {
       static navigationOptions = {
@@ -13,11 +17,20 @@ class Screen3 extends Component {
 />)}
     render() {
         return (
-            <View>
-                <Text>Publicar</Text>
-            </View>
+             <ScrollView contentContainerStyle={styles.contentContainer}>
+               <TituloPublicacion />
+               <Publicacion />
+            </ScrollView>
         );
     }
 }
 
 export default Screen3;
+
+
+const styles = StyleSheet.create({
+  contentContainer: {
+    top: -380,
+    paddingVertical: 380
+  }
+});

@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import {View, Text,Image} from 'react-native';
+import {View, Text,Image,ScrollView,StyleSheet} from 'react-native';
+
+
+// Engelber
+
+import Titulo from './../../../components/categorias/titulo';
+import Formulario from './../../../components/categorias/formulario';
+//import BotonGeneral from './../../../components/categorias/BotonGeneral';
+
 
 class Screen3 extends Component {
       static navigationOptions = {
@@ -13,11 +21,22 @@ class Screen3 extends Component {
 />)}
     render() {
         return (
-            <View>
-                <Text>Categoria</Text>
-            </View>
+              <ScrollView contentContainerStyle={styles.contentContainer}>
+            
+                <Titulo />
+                <Formulario />
+                
+            </ScrollView>
         );
     }
 }
 
 export default Screen3;
+
+
+const styles = StyleSheet.create({
+  contentContainer: {
+    top: -380,
+    paddingVertical: 380
+  }
+});
