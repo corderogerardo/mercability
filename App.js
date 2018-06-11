@@ -10,11 +10,8 @@ import LoginForm from './src/LoginForm/LoginForm';
 import Router from './src/Router';
 
 class App extends Component {
-    state = { loggedIn: null };
-
     componentDidMount() {
     }
-
     render() {
         const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
         return (

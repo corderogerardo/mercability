@@ -6,7 +6,7 @@ import ForgotPassword from './ForgotPassword/ForgotPassword';
 
 const RouterComponent = () => {
     return (
-        <Router sceneStyle={{ paddingTop: 30 }}>
+        <Router sceneStyle={{ paddingTop: 29 }}>
             <Scene key="root">
                 <Scene key="login" component={LoginForm} title="Please login" />
                 <Scene key="registrar" component={Registrar} title="Registrar" initial/>

@@ -6,6 +6,7 @@ import {
     DIRECCION_CHANGED,
     TELEFONO_CHANGED,
     FECHANACIMIENTO_CHANGED,
+    TOKEN_CHANGED,
     LOGIN_USER_SUCCESS,
     LOGIN_USER_FAIL,
     LOGIN_USER,
@@ -29,7 +30,7 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-    console.log("action " +action);
+    console.log("action " +JSON.stringify(action));
     switch (action.type) {
         case EMAIL_CHANGED:
             return { ...state, email: action.payload };

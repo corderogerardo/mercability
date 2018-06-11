@@ -8,97 +8,103 @@ import {
     Alert
 } from 'react-native';
 import { connect } from 'react-redux';
-import { emailChanged, passwordChanged, loginUser } from '../actions';
+import { emailChanged, passwordChanged, cedulaChanged, nombreChanged, telefonoChanged, direccionChanged, fechanacimientoChanged, tokenChanged, registerUser } from '../actions';
 import { Button, Card, CardSection, Input, Spinner } from '../commom';
 
 class Registrar extends Component {
 
+    onEmailChange(text) {
+        this.props.emailChanged(text);
+    }
+
+    onPasswordChange(text) {
+        this.props.passwordChanged(text);
+    }
+
+    onCedulaChanged(text) {
+        this.props.cedulaChanged(text);
+    }
+
+    onNombreChanged(text) {
+        this.props.nombreChanged(text);
+    }
+
+    onTelefonoChange(text) {
+        this.props.telefonoChanged(text);
+    }
+
+    onDireccionChange(text) {
+        this.props.direccionChanged(text);
+    }
+
+    onFechanacimientoChange(text) {
+        this.props.fechanacimientoChanged(text);
+    }
+
+    onTokenChange(text) {
+        this.props.tokenChanged(text);
+    }
+
     onButtonPress() {
-        const { email, password } = this.state;
-        console.log("Email " + email);
-        console.log("password " + password);
-        this.setState({ error: '', loading: true });
+        const { email, password, cedula, nombre, direccion, telefono, fechaNacimiento } = this.props;
 
-        // firebase.auth().signInWithEmailAndPassword(email, password)
-        //   .then(this.onLoginSuccess.bind(this))
-        //   .catch(() => {
-        //     firebase.auth().createUserWithEmailAndPassword(email, password)
-        //       .then(this.onLoginSuccess.bind(this))
-        //       .catch(this.onLoginFail.bind(this));
-        //   });
-        this.onLoginSuccess.bind(true);
-        return true;
-    }
-
-    onLoginFail() {
-        this.setState({ error: 'Authentication Failed', loading: false });
-    }
-
-    onLoginSuccess() {
-        this.setState({
-            email: '',
-            password: '',
-            cedula: '',
-            nombre: '',
-            direccion: '',
-            telefono: '',
-            fechaNacimiento: '',
-            error: '',
-            loading: false
-        });
+        this.props.registerUser({ email, password, cedula, nombre, direccion, telefono, fechaNacimiento });
     }
 
     renderButton() {
-        if (this.state.loading) {
+        if (this.props.loading) {
             return <Spinner size="small"/>;
         }
 
         return (
-            <Button onPress={ this.onButtonPress.bind(this) }>
-                Log in
-            </Button>
+
+            <TouchableHighlight
+                style={ styles.boton }
+                onPress={ this.onButtonPress.bind(this) }
+            >
+                <Text style={ styles.textoBoton }>Registrar</Text>
+            </TouchableHighlight>
+
+
         );
     }
 
     render() {
         return (
             <View style={ styles.container }>
-
                 <View>
-
                     <TextInput
                         style={ styles.input }
                         placeholder="Nombre"
                         label="Nombre"
                         value={ this.props.nombre }
-                        onChangeText={ this.onEmailChange.bind(this) }
-
+                        onChangeText={ this.onNombreChanged.bind(this) }
                     />
-
+                    <TextInput
+                        style={ styles.input }
+                        placeholder="Cedula"
+                        label="Cedula"
+                        value={ this.props.cedula }
+                        onChangeText={ this.onCedulaChanged.bind(this) }
+                    />
                     <TextInput
                         style={ styles.input }
                         placeholder="Correo"
-                        value={ this.props.correo }
-                        onChangeText={ (correo) => this.changeCorreo(correo) }
-
+                        value={ this.props.email }
+                        onChangeText={ this.onEmailChange.bind(this) }
                     />
-
                     <TextInput
                         style={ styles.input }
                         placeholder="Telefono"
                         value={ this.props.telefono }
-                        onChangeText={ (telefono) => this.changeTelefono(telefono) }
-
+                        onChangeText={ this.onTelefonoChange.bind(this) }
                     />
-
                     <TextInput
                         style={ styles.input }
                         placeholder="Direccion"
                         value={ this.props.direccion }
-                        onChangeText={ (direccion) => this.changeDireccion(direccion) }
-
+                        onChangeText={ this.onDireccionChange.bind(this) }
                     />
-
                     <TextInput
                         secureTextEntry
                         style={ styles.input }
@@ -108,23 +114,7 @@ class Registrar extends Component {
 
                     />
 
-                    <TouchableHighlight
-                        style={ styles.boton }
-                        onPress={ () => this.botonPressed() }
-                    >
-
-                        <Text style={ styles.textoBoton }>Guardar</Text>
-
-                    </TouchableHighlight>
-
-                    <TouchableHighlight
-                        style={ styles.boton }
-                    >
-
-                        <Text style={ styles.textoBoton }>Cerrar</Text>
-
-                    </TouchableHighlight>
-
+                    { this.renderButton() }
                 </View>
 
             </View>
@@ -135,11 +125,10 @@ class Registrar extends Component {
 const styles = StyleSheet.create({
 
     container: {
-        height: 120,
         paddingLeft: 15,
         paddingRight: 15,
-        paddingTop: 20
-
+        paddingTop: 20,
+        flex: 1
     },
 
     input: {
@@ -186,10 +175,13 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = ({ auth }) => {
-    const { email, password, error, loading } = auth;
+    const {
+        email, password,
+        error, loading, cedula, nombre, direccion, telefono, fechaNacimiento, token
+    } = auth;
 
-    return { email, password, error, loading };
+    return { email, password, cedula, nombre, direccion, telefono, fechaNacimiento, error, loading };
 };
 
 
-export default connect(mapStateToProps,{})(Registrar);
+export default connect(mapStateToProps, {emailChanged, passwordChanged, cedulaChanged, nombreChanged, telefonoChanged, direccionChanged, fechanacimientoChanged, registerUser, tokenChanged})(Registrar);
