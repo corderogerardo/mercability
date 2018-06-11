@@ -46,9 +46,9 @@ class Registrar extends Component {
     }
 
     onButtonPress() {
-        const { email, password, cedula, nombre, direccion, telefono, fechaNacimiento } = this.props;
+        const { email, password, cedula, nombre, direccion, telefono } = this.props;
 
-        this.props.registerUser({ email, password, cedula, nombre, direccion, telefono, fechaNacimiento });
+        this.props.registerUser({ email, password, cedula, nombre, direccion, telefono });
     }
 
     renderButton() {

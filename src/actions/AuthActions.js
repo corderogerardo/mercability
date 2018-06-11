@@ -1,4 +1,8 @@
 import { Actions } from 'react-native-router-flux';
+import axios from 'axios';
+import _ from 'lodash';
+
+import { constants }  from './../config/config'
 
 import {
     EMAIL_CHANGED,
@@ -81,10 +85,16 @@ export const loginUser = ({ email, password }) => {
     };
 };
 
-export const registerUser = ({ email, password, cedula, nombre, direccion, telefono, fechaNacimiento }) => {
+export const registerUser = ({ email, password, cedula, nombre, direccion, telefono }) => {
     return (dispatch) => {
         dispatch({ type: LOGIN_USER });
-
+        let body = { email, password };
+        body.person = { cedula, nombre, direccion, telefono};
+        axios.post(constants.apiUrlLocal+`users`, {...body})
+            .then(user => registerUserSuccess(dispatch, user))
+            .catch(function (e) {
+                console.log("error " + e);
+            })
     };
 };
 
@@ -106,10 +116,18 @@ const registerUserFail = (dispatch) => {
 };
 
 const registerUserSuccess = (dispatch, user) => {
+    console.log("user " + JSON.stringify(user));
+    console.log("status " + user.status);
+    const token = _.pick(user.headers,['x-auth']);
+    console.log("token " + JSON.stringify(token['x-auth']));
     dispatch({
         type: REGISTER_USER_SUCCESS,
         payload: user
     });
+    dispatch({
+        type: TOKEN_CHANGED,
+        payload: token['x-auth']
+    });
 
-    Actions.main();
+    //Actions.login();
 };
