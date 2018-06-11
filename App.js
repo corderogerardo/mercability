@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
+import reducers from './src/reducers';
+import { View } from 'react-native';
 
+import { Header, Button, Spinner } from './src/commom';
+import LoginForm from './src/LoginForm/LoginForm';
+import Router from './src/Router';
 
-import Menu from './components/Menu/Menu';
+class App extends Component {
+    state = { loggedIn: null };
 
-// You can import from local files
+    componentDidMount() {
+    }
 
-
-// or any pure javascript modules available in npm// Version can be specified in package.json
-
-export default class App extends Component {
-  
-  
-
-  render() {
-    return (
-   
-     <Menu />
-  
-
-    );
-  }
+    render() {
+        const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
+        return (
+            <Provider store={ store }>
+                <Router/>
+            </Provider>
+        );
+    }
 }
+
+export default App;
