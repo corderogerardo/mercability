@@ -27,8 +27,6 @@ import PublicationReducer from './Publications/PublicationReducer';
 import UserFormReducer from './User/UserFormReducer';
 import UserReducer from './User/UserReducer';
 
-
-
 export default combineReducers({
     auth: AuthReducer,
     productForm: ProductFormReducer,

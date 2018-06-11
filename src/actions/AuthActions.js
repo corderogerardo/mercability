@@ -1,4 +1,5 @@
 import { Actions } from 'react-native-router-flux';
+
 import {
     EMAIL_CHANGED,
     PASSWORD_CHANGED,
