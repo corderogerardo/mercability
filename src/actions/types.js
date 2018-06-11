@@ -1,8 +1,22 @@
 export const EMAIL_CHANGED = 'email_changed';
 export const PASSWORD_CHANGED = 'password_changed';
+
+export const CEDULA_CHANGED = 'cedula_changed';
+export const NOMBRE_CHANGED = 'nombre_changed';
+export const DIRECCION_CHANGED = 'direccion_changed';
+export const TELEFONO_CHANGED = 'telefono_changed';
+export const FECHANACIMIENTO_CHANGED = 'fechanacimiento_changed';
+export const TOKEN_CHANGED = 'token_changed';
+
+
 export const LOGIN_USER_SUCCESS = 'login_user_success';
 export const LOGIN_USER_FAIL = 'login_user_fail';
 export const LOGIN_USER = 'login_user';
+
+export const REGISTER_USER_SUCCESS = 'register_user_success';
+export const REGISTER_USER_FAIL = 'register_user_fail';
+export const REGISTER_USER = 'register_user';
+
 
 export const PRODUCT_UPDATE = 'product_update';
 export const PRODUCT_CREATE = 'product_create';

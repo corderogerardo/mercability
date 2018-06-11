@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import {
+    StyleSheet,
+    TextInput,
+    TouchableHighlight,
+    Text,
+    View,
+    Alert
+} from 'react-native';
+import { connect } from 'react-redux';
+import { emailChanged, passwordChanged, loginUser } from '../actions';
 import { Button, Card, CardSection, Input, Spinner } from '../commom';
 
 class Registrar extends Component {
-    state = { email: '', password: '', error: '', loading: false };
 
     onButtonPress() {
         const { email, password } = this.state;
@@ -30,18 +38,23 @@ class Registrar extends Component {
         this.setState({
             email: '',
             password: '',
-            loading: false,
-            error: ''
+            cedula: '',
+            nombre: '',
+            direccion: '',
+            telefono: '',
+            fechaNacimiento: '',
+            error: '',
+            loading: false
         });
     }
 
     renderButton() {
         if (this.state.loading) {
-            return <Spinner size="small" />;
+            return <Spinner size="small"/>;
         }
 
         return (
-            <Button onPress={this.onButtonPress.bind(this)}>
+            <Button onPress={ this.onButtonPress.bind(this) }>
                 Log in
             </Button>
         );
@@ -49,44 +62,134 @@ class Registrar extends Component {
 
     render() {
         return (
-            <Card>
-                <CardSection>
-                    <Input
-                        placeholder="user@gmail.com"
-                        label="Email"
-                        value={this.state.email}
-                        onChangeText={email => this.setState({ email })}
-                    />
-                </CardSection>
+            <View style={ styles.container }>
 
-                <CardSection>
-                    <Input
+                <View>
+
+                    <TextInput
+                        style={ styles.input }
+                        placeholder="Nombre"
+                        label="Nombre"
+                        value={ this.props.nombre }
+                        onChangeText={ this.onEmailChange.bind(this) }
+
+                    />
+
+                    <TextInput
+                        style={ styles.input }
+                        placeholder="Correo"
+                        value={ this.props.correo }
+                        onChangeText={ (correo) => this.changeCorreo(correo) }
+
+                    />
+
+                    <TextInput
+                        style={ styles.input }
+                        placeholder="Telefono"
+                        value={ this.props.telefono }
+                        onChangeText={ (telefono) => this.changeTelefono(telefono) }
+
+                    />
+
+                    <TextInput
+                        style={ styles.input }
+                        placeholder="Direccion"
+                        value={ this.props.direccion }
+                        onChangeText={ (direccion) => this.changeDireccion(direccion) }
+
+                    />
+
+                    <TextInput
                         secureTextEntry
-                        placeholder="password"
-                        label="Password"
-                        value={this.state.password}
-                        onChangeText={password => this.setState({ password })}
+                        style={ styles.input }
+                        placeholder="Contrasena"
+                        value={ this.props.contrasena }
+                        onChangeText={ this.onPasswordChange.bind(this) }
+
                     />
-                </CardSection>
 
-                <Text style={styles.errorTextStyle}>
-                    {this.state.error}
-                </Text>
+                    <TouchableHighlight
+                        style={ styles.boton }
+                        onPress={ () => this.botonPressed() }
+                    >
 
-                <CardSection>
-                    {this.renderButton()}
-                </CardSection>
-            </Card>
+                        <Text style={ styles.textoBoton }>Guardar</Text>
+
+                    </TouchableHighlight>
+
+                    <TouchableHighlight
+                        style={ styles.boton }
+                    >
+
+                        <Text style={ styles.textoBoton }>Cerrar</Text>
+
+                    </TouchableHighlight>
+
+                </View>
+
+            </View>
         );
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
+
+    container: {
+        height: 120,
+        paddingLeft: 15,
+        paddingRight: 15,
+        paddingTop: 20
+
+    },
+
+    input: {
+        //backgroundColor: '#2dc7b8',//'rgba(255, 255, 255, 0.4)',
+        height: 40,
+        marginHorizontal: 20,
+        paddingLeft: 45,
+        borderRadius: 20,
+        color: 'black',
+        marginTop: 20,
+        fontSize: 20,
+        backgroundColor: '#009688',
+        borderColor: '#009688',
+        borderWidth: 0
+    },
+
+    boton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#073647',
+        borderRadius: 20,
+        marginTop: 25,
+        marginHorizontal: 10,
+        paddingLeft: 20,
+
+    },
+
+    textoBoton: {
+        alignItems: 'center',
+        textAlign: 'center',
+        color: 'white',
+        fontSize: 25,
+        height: 40,
+        justifyContent: 'center',
+        textAlignVertical: 'center',
+        alignSelf: 'stretch'
+
+    },
     errorTextStyle: {
         fontSize: 20,
         alignSelf: 'center',
         color: 'red'
     }
+});
+
+const mapStateToProps = ({ auth }) => {
+    const { email, password, error, loading } = auth;
+
+    return { email, password, error, loading };
 };
 
-export default Registrar;
+
+export default connect(mapStateToProps,{})(Registrar);
