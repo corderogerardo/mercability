@@ -13,7 +13,7 @@ export default class SignupSection extends Component {
 			<View style={styles.container}>
 		<TouchableHighlight
         style={styles.button}
-        onPress={() => Actions.login()} >
+        onPress={() => Actions.Registrar()} >
 				<Text style={styles.text}>Create Account</Text>
 				</TouchableHighlight>
 					<TouchableOpacity onPress={this._handleFacebookLogin}>

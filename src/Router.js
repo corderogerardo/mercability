@@ -1,6 +1,7 @@
 import React from 'react';
 import {Scene, Router, Actions } from 'react-native-router-flux';
-import LoginForm from './LoginForm/LoginForm';
+import Login from './Login/Login';
+
 import Registrar from './Registrar/Registrar';
 import ForgotPassword from './ForgotPassword/ForgotPassword';
 
@@ -8,9 +9,10 @@ const RouterComponent = () => {
     return (
         <Router sceneStyle={{ paddingTop: 29 }}>
             <Scene key="root">
-                <Scene key="login" component={LoginForm} title="Please login" />
-                <Scene key="registrar" component={Registrar} title="Registrar" initial/>
-                <Scene key="forgetPassword" component={ForgotPassword} title="Forgot Password" />
+                <Scene key="Login" component={Login} title="Login" hideNavBar={true}/> 
+    			 
+                <Scene key="Registrar" component={Registrar} title="Registrar" />
+                
             </Scene>
         </Router>
     );

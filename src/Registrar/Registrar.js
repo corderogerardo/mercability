@@ -115,6 +115,12 @@ class Registrar extends Component {
                     />
 
                     { this.renderButton() }
+
+                    <TouchableHighlight
+        style={styles.boton}
+        onPress={() => Actions.Login()} >
+                <Text style={ styles.Boton }>Atras</Text>
+            </TouchableHighlight>
                 </View>
 
             </View>
