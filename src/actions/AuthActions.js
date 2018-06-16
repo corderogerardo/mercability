@@ -79,8 +79,10 @@ export const tokenChanged = (text) => {
 
 export const loginUser = ({ email, password }) => {
     return (dispatch) => {
-
         dispatch({ type: REGISTER_USER });
+        axios.post(constants.apiUrlLocal+`users/login`, {email,password})
+            .then(user => loginUserSuccess(dispatch, user))
+            .catch(() => loginUserFail(dispatch));
 
     };
 };
@@ -92,9 +94,7 @@ export const registerUser = ({ email, password, cedula, nombre, direccion, telef
         body.person = { cedula, nombre, direccion, telefono};
         axios.post(constants.apiUrlLocal+`users`, {...body})
             .then(user => registerUserSuccess(dispatch, user))
-            .catch(function (e) {
-                console.log("error " + e);
-            })
+            .catch(() => registerUserFail(dispatch));
     };
 };
 
@@ -103,12 +103,18 @@ const loginUserFail = (dispatch) => {
 };
 
 const loginUserSuccess = (dispatch, user) => {
+    const token = _.pick(user.headers,['x-auth']);
+    console.log("token " + JSON.stringify(token['x-auth']));
     dispatch({
         type: LOGIN_USER_SUCCESS,
         payload: user
     });
+    dispatch({
+        type: TOKEN_CHANGED,
+        payload: token['x-auth']
+    });
 
-    Actions.main();
+    Actions.menu();
 };
 
 const registerUserFail = (dispatch) => {
@@ -129,5 +135,5 @@ const registerUserSuccess = (dispatch, user) => {
         payload: token['x-auth']
     });
 
-    //Actions.login();
+    Actions.login();
 };
