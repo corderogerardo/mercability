@@ -80,7 +80,7 @@ export const tokenChanged = (text) => {
 export const loginUser = ({ email, password }) => {
     return (dispatch) => {
         dispatch({ type: REGISTER_USER });
-        axios.post(constants.apiUrlLocal+`users/login`, {email,password})
+        axios.post(constants.apiUrl+`users/login`, {email,password})
             .then(user => loginUserSuccess(dispatch, user))
             .catch(() => loginUserFail(dispatch));
 

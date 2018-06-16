@@ -4,16 +4,15 @@ import Login from './Login/Login';
 
 import Registrar from './Registrar/Registrar';
 import ForgotPassword from './ForgotPassword/ForgotPassword';
-import Menu from './Menu/Menu';
 
 const RouterComponent = () => {
     return (
-        <Router sceneStyle={{ paddingTop: 29 }}>
+        <Router>
             <Scene key="root">
-                <Scene key="login" component={Login} title="Please login" />
-                <Scene key="registrar" component={Registrar} title="Registrar" initial/>
+                <Scene key="login" component={Login} title="Please login" initial/>
+                <Scene key="registrar" component={Registrar} title="Registrar" />
                 <Scene key="forgetPassword" component={ForgotPassword} title="Forgot Password" />
-                <Scene key="menu" component={Menu} title="Forgot Password" />
+                {/*<Scene key="menu" component={} title="Forgot Password" />*/}
             </Scene>
         </Router>
     );
