@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { emailChanged, passwordChanged, loginUser, tokenChanged } from '../actions';
-import { Actions } from 'react-native-router-flux';
+import { emailChanged, passwordChanged, loginUser } from '../actions';
 
 import {
     StyleSheet,
@@ -36,7 +35,6 @@ class Login extends Component {
 
     onButtonPress() {
         const { email, password } = this.props;
-
         this.props.loginUser({ email, password });
     }
 
@@ -123,7 +121,6 @@ const styles = StyleSheet.create({
         marginTop: 25,
         marginHorizontal: 10,
         paddingLeft: 20,
-
     },
 
     textoBoton: {
