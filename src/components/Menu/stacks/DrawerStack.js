@@ -12,6 +12,8 @@ import logoImg from '../../images/menu4.png';
 import campana from '../../images/campana4.png';
 import buscar from '../../images/lupa3.png';
 
+import { Actions } from 'react-native-router-flux';
+
 const DrawerNavigation = StackNavigator({
     DrawerStack: {screen: DrawerScreen}
 }, {
@@ -55,13 +57,7 @@ const DrawerNavigation = StackNavigator({
         </View>,
          headerRight:<View style={{flex: 1, flexDirection: 'row'}}>
             <TouchableHighlight 
-                onPress={() => {
-                    if(navigation.state.index === 0){
-                        navigation.navigate('DrawerOpen');
-                    } else {
-                        navigation.navigate('DrawerClose');
-                    }
-                }}>
+                onPress={() => Actions.Login()}>
             <Image source={campana} style={styles.campana} />
         
             </TouchableHighlight>

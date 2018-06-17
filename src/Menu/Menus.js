@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-import Menu from './components/Menu/Menu';
+import Menu from '../components/Menu/Menu';
 
 // You can import from local files
 

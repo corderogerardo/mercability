@@ -8,41 +8,25 @@ import {
         Alert
 
 } from 'react-native';
+import { connect } from 'react-redux';
+import { nombreChanged, descripcionChanged, registerCategoria } from '../../actions';
 
-export default class Formulario extends Component {
-
-    constructor(){
-
-		super()
-		this.state = {
-
-            codigo: '',
-            nombre:'',
-            descripcion:''
-		}
-      }
-      
-      changeCodigo(codigo){
-        this.setState({codigo})
-      }
-
-      changeNombre(nombre){
-        this.setState({nombre})
-      }
-
-      changeDescripcion(descripcion){
-        this.setState({descripcion})
-      }
-
-
+class Formulario extends Component {
       
 
-      botonPressed(){
-        if(this.state.codigo && this.state.nombre && this.state.descripcion){
-          Alert.alert(this.state.codigo+ ''+ this.state.nombre +"" + this.state.descripcion)
-        }else{
-            Alert.alert('Debe llenar todos los campos')
-        }
+      changeNombre(text){
+        this.props.nombreChanged(text)
+      }
+
+      changeDescripcion(text){
+        this.props.descripcionChanged(text)
+      }
+
+
+   onButtonPress() {
+        const { nombre, descripcion } = this.props;
+
+        this.props.registerCategoria({ nombre, descripcion });
     }
     
 
@@ -51,37 +35,25 @@ export default class Formulario extends Component {
         return (
 
             <View style={styles.container}>
-
-                 <View>
-
-                     <TextInput 
-						style={styles.input}
-						placeholder="Código"
-						value={this.state.codigo}
-                        onChangeText={(codigo) => this.changeCodigo(codigo)}
-                       
-					
-					/>
-
-                    <TextInput 
-						style={styles.input}
-						placeholder="Nombre"
-						value={this.state.nombre}
-                        onChangeText={(nombre) => this.changeNombre(nombre)}
+              <View>
+              <TextInput 
+						        style={styles.input}
+						        placeholder="Nombre"
+						        value={this.state.nombre}
+                    onChangeText={ this.changeNombre.bind(this) }
                         
-					/>
-
-                    <TextInput 
-						style={styles.input}
-						placeholder="Descripción"
-						value={this.state.descripcion}
-                        onChangeText={(descripcion) => this.changeDescripcion(descripcion)}
+			       		/>
+               <TextInput 
+					         	style={styles.input}
+					         	placeholder="Descripción"
+						        value={this.state.descripcion}
+                   onChangeText={ this.changeDescripcion.bind(this) }
                         					
 					/>
 
                     <TouchableHighlight
 						style={styles.boton}
-						onPress={() => this.botonPressed()}
+						 onPress={ this.onButtonPress.bind(this) }
 					>
 
 						<Text style={styles.textoBoton}>Registrar</Text>
@@ -163,4 +135,15 @@ const styles = StyleSheet.create({
           alignSelf: 'stretch'
          
       },
-});    
+}); 
+
+const mapStateToProps = ({ auth }) => {
+    const {
+       nombre, descripcion
+    } = auth;
+
+    return { nombre, descripcion };
+};
+
+
+export default connect(mapStateToProps, {nombreChanged, descripcionChanged, registerCategoria})(Formulario);   

@@ -79,9 +79,11 @@ export const tokenChanged = (text) => {
 
 export const loginUser = ({ email, password }) => {
     return (dispatch) => {
-
         dispatch({ type: REGISTER_USER });
-
+        axios.post(constants.apiUrl+`users/login`, {email,password})
+            .then(user => loginUserSuccess(dispatch, user))
+            .catch(() => loginUserFail(dispatch));
+ 
     };
 };
 
@@ -97,18 +99,37 @@ export const registerUser = ({ email, password, cedula, nombre, direccion, telef
             })
     };
 };
+/*
+export const registerCategoria = ({ nombre, descripcion }) => {
+    return (dispatch) => {
+        dispatch({ type: LOGIN_USER });
+        let body = { email, password };
+       // body.person = { nombre, descripcion };
+        axios.post(constants.apiUrlLocal+`categories`, {...body})
+            .then(user => registerUserSuccess(dispatch, user))
+            .catch(function (e) {
+                console.log("error " + e);
+            })
+    };
+};*/
 
 const loginUserFail = (dispatch) => {
     dispatch({ type: LOGIN_USER_FAIL });
 };
 
 const loginUserSuccess = (dispatch, user) => {
+    const token = _.pick(user.headers,['x-auth']);
+    console.log("token " + JSON.stringify(token['x-auth']));
     dispatch({
         type: LOGIN_USER_SUCCESS,
         payload: user
     });
-
-    Actions.main();
+    dispatch({
+        type: TOKEN_CHANGED,
+        payload: token['x-auth']
+    });
+ 
+    Actions.menu();
 };
 
 const registerUserFail = (dispatch) => {

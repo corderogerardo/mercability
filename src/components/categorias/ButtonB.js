@@ -81,12 +81,12 @@ export default class ButtonSubmit extends Component {
 			<View style={styles.container}>
 				<Animated.View style={{width: changeWidth}}>
 					<TouchableOpacity style={styles.button}
-				 onPress={() => Actions.Menus()} 
+						onPress={this._onPress}
 						activeOpacity={1} >
 							{this.state.isLoading ?
 								<Image source={spinner} style={styles.image} />
 								:
-								<Text style={styles.text}>LOGIN</Text>
+								<Text style={styles.text}>Buscar</Text>
 							}
 					</TouchableOpacity>
 					<Animated.View style={[ styles.circle, {transform: [{scale: changeScale}]} ]} />
@@ -98,7 +98,8 @@ export default class ButtonSubmit extends Component {
 
 const styles = StyleSheet.create({
 	container: {
-		top: -5,
+	  width: 520,
+		top: 13,
 		alignItems: 'center',
 		justifyContent: 'flex-start',
 	},
@@ -107,20 +108,11 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		backgroundColor: '#073647',
 		height: MARGIN,
+		width:140,
 		borderRadius: 20,
 		zIndex: 100,
 	},
-	circle: {
-		height: MARGIN,
-		width: MARGIN,
-		marginTop: -MARGIN,
-		borderWidth: 1,
-		borderColor: '#4b626a',
-		borderRadius: 100,
-		alignSelf: 'center',
-		zIndex: 99,
-		backgroundColor: '#073647',
-	},
+
 	text: {
 		color: 'white',
 		backgroundColor: 'transparent',
