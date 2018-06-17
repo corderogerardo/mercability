@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { emailChanged, passwordChanged, loginUser } from '../actions';
 
 import {
     StyleSheet,
@@ -15,13 +17,13 @@ import Logot from '../components/login/Logot';
 import SignupSection from '../components/login/SignupSection';
 
 import Wallpaper from '../components/login/Wallpaper';
+import { Button, Card, CardSection, Input, Spinner } from '../commom';
+
 
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged,loginUser, tokenChanged } from '../actions';
 import { Button, Card, CardSection, Input, Spinner } from '../commom';
-
-
 
 // You can import from local files
 

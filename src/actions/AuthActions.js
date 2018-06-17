@@ -94,9 +94,7 @@ export const registerUser = ({ email, password, cedula, nombre, direccion, telef
         body.person = { cedula, nombre, direccion, telefono};
         axios.post(constants.apiUrlLocal+`users`, {...body})
             .then(user => registerUserSuccess(dispatch, user))
-            .catch(function (e) {
-                console.log("error " + e);
-            })
+            .catch(() => registerUserFail(dispatch));
     };
 };
 /*
@@ -150,5 +148,5 @@ const registerUserSuccess = (dispatch, user) => {
         payload: token['x-auth']
     });
 
-    //Actions.login();
+    Actions.login();
 };

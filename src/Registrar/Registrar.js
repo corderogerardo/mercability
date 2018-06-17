@@ -11,6 +11,8 @@ import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, cedulaChanged, nombreChanged, telefonoChanged, direccionChanged, fechanacimientoChanged, tokenChanged, registerUser } from '../actions';
 import { Button, Card, CardSection, Input, Spinner } from '../commom';
 
+import { Actions } from 'react-native-router-flux';
+
 class Registrar extends Component {
 
     onEmailChange(text) {
@@ -127,9 +129,6 @@ class Registrar extends Component {
 const styles = StyleSheet.create({
 
     container: {
-        paddingLeft: 15,
-        paddingRight: 15,
-        paddingTop: 20,
         flex: 1
     },
 

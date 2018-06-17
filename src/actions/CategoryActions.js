@@ -18,6 +18,7 @@ export const categoryCreate = ({ name, phone, shift }) => {
 
     return (dispatch) => {
         //dispatch({ type: CATEGORY_CREATE });
+
         //Actions.categoryList({ type: 'reset' });
     };
 };
