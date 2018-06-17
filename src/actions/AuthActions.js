@@ -2,7 +2,7 @@ import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 import _ from 'lodash';
 
-import { constants }  from './../config/config'
+import { constants } from './../config/config'
 
 import {
     EMAIL_CHANGED,
@@ -80,10 +80,11 @@ export const tokenChanged = (text) => {
 export const loginUser = ({ email, password }) => {
     return (dispatch) => {
         dispatch({ type: REGISTER_USER });
-        axios.post(constants.apiUrl+`users/login`, {email,password})
+        let body = { email, password };
+        axios.post(constants.apiUrl + `users/login`, { ...body })
             .then(user => loginUserSuccess(dispatch, user))
             .catch(() => loginUserFail(dispatch));
- 
+
     };
 };
 
@@ -91,32 +92,32 @@ export const registerUser = ({ email, password, cedula, nombre, direccion, telef
     return (dispatch) => {
         dispatch({ type: LOGIN_USER });
         let body = { email, password };
-        body.person = { cedula, nombre, direccion, telefono};
-        axios.post(constants.apiUrlLocal+`users`, {...body})
+        body.person = { cedula, nombre, direccion, telefono };
+        axios.post(constants.apiUrlLocal + `users`, { ...body })
             .then(user => registerUserSuccess(dispatch, user))
             .catch(() => registerUserFail(dispatch));
     };
 };
 /*
-export const registerCategoria = ({ nombre, descripcion }) => {
-    return (dispatch) => {
-        dispatch({ type: LOGIN_USER });
-        let body = { email, password };
-       // body.person = { nombre, descripcion };
-        axios.post(constants.apiUrlLocal+`categories`, {...body})
-            .then(user => registerUserSuccess(dispatch, user))
-            .catch(function (e) {
-                console.log("error " + e);
-            })
-    };
-};*/
+ export const registerCategoria = ({ nombre, descripcion }) => {
+ return (dispatch) => {
+ dispatch({ type: LOGIN_USER });
+ let body = { email, password };
+ // body.person = { nombre, descripcion };
+ axios.post(constants.apiUrlLocal+`categories`, {...body})
+ .then(user => registerUserSuccess(dispatch, user))
+ .catch(function (e) {
+ console.log("error " + e);
+ })
+ };
+ };*/
 
 const loginUserFail = (dispatch) => {
     dispatch({ type: LOGIN_USER_FAIL });
 };
 
 const loginUserSuccess = (dispatch, user) => {
-    const token = _.pick(user.headers,['x-auth']);
+    const token = _.pick(user.headers, ['x-auth']);
     console.log("token " + JSON.stringify(token['x-auth']));
     dispatch({
         type: LOGIN_USER_SUCCESS,
@@ -126,8 +127,8 @@ const loginUserSuccess = (dispatch, user) => {
         type: TOKEN_CHANGED,
         payload: token['x-auth']
     });
- 
-    Actions.menu();
+
+    //Actions.menu();
 };
 
 const registerUserFail = (dispatch) => {
@@ -137,7 +138,7 @@ const registerUserFail = (dispatch) => {
 const registerUserSuccess = (dispatch, user) => {
     console.log("user " + JSON.stringify(user));
     console.log("status " + user.status);
-    const token = _.pick(user.headers,['x-auth']);
+    const token = _.pick(user.headers, ['x-auth']);
     console.log("token " + JSON.stringify(token['x-auth']));
     dispatch({
         type: REGISTER_USER_SUCCESS,

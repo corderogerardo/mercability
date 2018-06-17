@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { emailChanged, passwordChanged, loginUser } from '../actions';
+import { emailChanged, passwordChanged, loginUser, tokenChanged } from '../actions';
+import { Actions } from 'react-native-router-flux';
 
 import {
     StyleSheet,
@@ -20,11 +21,6 @@ import Wallpaper from '../components/login/Wallpaper';
 import { Button, Card, CardSection, Input, Spinner } from '../commom';
 
 
-import { Actions } from 'react-native-router-flux';
-import { connect } from 'react-redux';
-import { emailChanged, passwordChanged,loginUser, tokenChanged } from '../actions';
-import { Button, Card, CardSection, Input, Spinner } from '../commom';
-
 // You can import from local files
 
 
@@ -33,24 +29,24 @@ class Login extends Component {
     onEmailChange(text) {
         this.props.emailChanged(text);
     }
- 
+
     onPasswordChange(text) {
         this.props.passwordChanged(text);
     }
 
     onButtonPress() {
         const { email, password } = this.props;
- 
+
         this.props.loginUser({ email, password });
     }
- 
+
     renderButton() {
         if (this.props.loading) {
             return <Spinner size="large"/>;
         }
- 
+
         return (
-             <TouchableHighlight
+            <TouchableHighlight
                 style={ styles.boton }
                 onPress={ this.onButtonPress.bind(this) }
             >
@@ -58,22 +54,19 @@ class Login extends Component {
             </TouchableHighlight>
         );
     }
-
-        form() {
+    form() {
         return (
             <View style={ styles.container }>
                 <View>
-                   
                     <TextInput
                         style={ styles.input }
                         placeholder="Correo"
                         placeholderTextColor='white'
-                       underlineColorAndroid='transparent'
-                       value={ this.props.email }
-                       onChangeText={ this.onEmailChange.bind(this) }
-                       
+                        underlineColorAndroid='transparent'
+                        value={ this.props.email }
+                        onChangeText={ this.onEmailChange.bind(this) }
+
                     />
-                  
                     <TextInput
                         secureTextEntry
                         style={ styles.input }
@@ -81,48 +74,34 @@ class Login extends Component {
                         placeholderTextColor='white'
                         underlineColorAndroid='transparent'
                         value={ this.props.contrasena }
-                        onChangeText={ this.onPasswordChange.bind(this) }                        
+                        onChangeText={ this.onPasswordChange.bind(this) }
 
                     />
-
-                 
-
-                  
                 </View>
-
             </View>
         );
     }
 
-
-
-
-  render() {
-    return (
-     <Wallpaper>
-    <Logo />
-    <Logof />
-    <Logot />
-  
-    <SignupSection />
-
-    { this.form() }
-    { this.renderButton() }
-    </Wallpaper>
-    );
-  }
+    render() {
+        return (
+            <Wallpaper>
+                <Logo/>
+                <Logof/>
+                <Logot/>
+                <SignupSection/>
+                { this.form() }
+                { this.renderButton() }
+            </Wallpaper>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-
     container: {
         paddingLeft: 15,
         paddingRight: 15,
         paddingTop: 10,
-       
     },
-  
-
     input: {
         //backgroundColor: '#2dc7b8',//'rgba(255, 255, 255, 0.4)',
         height: 40,
@@ -167,8 +146,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ auth }) => {
     const { email, password, error, loading } = auth;
- 
+
     return { email, password, error, loading };
 };
- 
+
 export default connect(mapStateToProps, { emailChanged, passwordChanged, loginUser })(Login);
